@@ -4,6 +4,7 @@ import pandas as pd
 from collections import Counter
 from matplotlib import pyplot as plt
 from utilities import GesturesVisualizer as GV
+from utilities import FeaturesExtractor as FE
 
 def read_data():
     # Read data
@@ -97,6 +98,24 @@ def visualize_gestures(users, devices):
     gestureVisualizer = GV.GesturesVisualizer(gests.loc[0:25], deviceWidth=411, deviceHeight=798)
     gestureVisualizer.plot_gestures()
 
+def get_features(users, devices):
+
+    # Get user info
+    uid = users[(users["_id"] == "5b5b2b94ed261d61ede3d085")].iloc[0]["_id"]
+    # Get devices info for the user
+    devIds = devices[(devices["user_id"] == uid)].iloc[:]["device_id"]
+
+    # Get gestures
+    gests = pd.DataFrame()
+    for devId in devIds.index:
+        gests = gests.append(gestures[(gestures["device_id"] == devIds.loc[devId])])
+    gests = gests.reset_index(drop=True)
+
+    # Get calculated features for a certain swipe
+    featuresExtractor = FE.FeaturesExtractor(gests)
+    features_info = featuresExtractor.get_swipe_features(gests.loc[2])
+    print(json.dumps(features_info, indent = 2))
+
 
 # Read data
 print("Reading data...")
@@ -117,3 +136,6 @@ create_boxplot(devices)
 
 # Create box plot
 visualize_gestures(users, devices)
+
+# Get Features
+get_features(users, devices)
