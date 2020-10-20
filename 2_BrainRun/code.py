@@ -8,10 +8,10 @@ from utilities import FeaturesExtractor as FE
 
 def read_data():
     # Read data
-    users = pd.read_csv("2. BrainRun/data/users.csv", sep=";")
-    devices = pd.read_csv("2. BrainRun/data/devices.csv", sep=";")
-    games = pd.read_csv("2. BrainRun/data/games.csv", sep=";")
-    gestures = pd.read_csv("2. BrainRun/data/gestures.csv", sep=";")
+    users = pd.read_csv("2_BrainRun/data/users.csv", sep=";")
+    devices = pd.read_csv("2_BrainRun/data/devices.csv", sep=";")
+    games = pd.read_csv("2_BrainRun/data/games.csv", sep=";")
+    gestures = pd.read_csv("2_BrainRun/data/gestures.csv", sep=";")
 
     # Transform string representation of list into a python list
     gestures["data"] = gestures["data"].apply(lambda x: json.loads(x.replace("'", "\"")))
