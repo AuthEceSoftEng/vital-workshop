@@ -13,11 +13,9 @@ Instructions for running the workshop at repl.it:
 4. In the text field write `AuthEceSoftEng/vital-workshop`
 5. Click on 'Import from GitHub'
 
-After repl.it opens up, run the following commands at the console (on the right):
-```
-python -m poetry lock
-python -m poetry install 
-```
+After repl.it opens up, run the following commands at the console (on the right):  
+`python -m poetry lock`  
+`python -m poetry install`
 
 You 're all set! Open any script to see the code and run it using commands (e.g. `python 1_Cenote/code.py`).  
 You can also write `python` in the console to run the interpreter and execute the commands one-by-one.
