@@ -20,11 +20,11 @@ http://assist.ee.auth.gr/docs/
 # %%
 PROJECT   = 'pide23f7ea9d71'
 READ_KEY  = 'c55787bd-f262-413a-abb5-dfd07896ef75'
-WRITE_KEY = 'bdaf39d4-6f58-4f40-a953-5c285c26ea94'
+WRITE_KEY = 'undefined'
 
 PROJECT   = 'pidc06ebaeb8e6'
 READ_KEY  = 'd5c81802-a1f6-46a2-ad31-8be10d7172f4'
-WRITE_KEY = 'cc5d8392-1226-42c6-a1e2-2d4555a67682'
+WRITE_KEY = 'undefined'
 
 URL = "https://cenote.sidero.services/api/projects/" + PROJECT
 
