@@ -263,4 +263,7 @@ g = seaborn.catplot(
     hue="sensor", col="variable",
     data=sdf, kind="box",
     height=2, aspect=1.75, col_wrap=2, sharey=False)
+g.set_xticklabels(rotation=30)
+plt.tight_layout()
+plt.show()
 
