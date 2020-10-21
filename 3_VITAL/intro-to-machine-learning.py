@@ -118,11 +118,12 @@ dataset_df
 # %%
 import matplotlib.pyplot as plt
 
-f = plt.figure(figsize=(11.69, 8.27))
+f = plt.figure()
 plt.matshow(dataset_df.corr(), fignum=f.number)
-plt.xticks(range(dataset_df.shape[1]), dataset_df.columns, fontsize=14, rotation=45)
-plt.yticks(range(dataset_df.shape[1]), dataset_df.columns, fontsize=14)
+plt.xticks(range(dataset_df.shape[1]), dataset_df.columns, fontsize=10, rotation=30, horizontalalignment='left')
+plt.yticks(range(dataset_df.shape[1]), dataset_df.columns, fontsize=10)
 cb = plt.colorbar()
+plt.show()
 
 # %%
 """
@@ -201,3 +202,4 @@ m, b = np.polyfit(y_test, y_hat, 1)
 step = (axis_max - axis_min ) / 100
 x_lsq = np.arange(axis_min, axis_max+step, step)
 plt.plot(x_lsq, [i * m + b for i in x_lsq], '-')
+plt.show()

@@ -20,11 +20,6 @@ http://assist.ee.auth.gr/docs/
 # %%
 PROJECT   = 'pide23f7ea9d71'
 READ_KEY  = 'c55787bd-f262-413a-abb5-dfd07896ef75'
-WRITE_KEY = 'undefined'
-
-PROJECT   = 'pidc06ebaeb8e6'
-READ_KEY  = 'd5c81802-a1f6-46a2-ad31-8be10d7172f4'
-WRITE_KEY = 'undefined'
 
 URL = "https://cenote.sidero.services/api/projects/" + PROJECT
 
@@ -64,9 +59,6 @@ We test the efficacy of the function on known data and known unknowns (:
 
 # %%
 cenote_get("measurements", "extraction", {"latest": 1})
-
-# %%
-cenote_get("NOT_EXISTING", "extraction", {"latest": 2})
 
 # %%
 """
@@ -171,7 +163,8 @@ Here, we use the .loc function which provides quick indexing of the data, in ord
 import numpy as np
 
 df.loc[df.temperature < -100, ('temperature')] = np.nan
-df.loc[df.humidity < 0, ('humidity')] = np.nan
+for key in ["windspeed", "winddirection", "temperature", "humidity"]:
+  df.loc[df[key] < 0, ('humidity')] = np.nan
 
 # %%
 """
@@ -191,18 +184,10 @@ Most of the work here utilizes the [matplotlib](https://matplotlib.org/) package
 """
 
 # %%
-df.plot(x="epoch", y="temperature") # kind="line"
-
-# %%
-df.plot(x="epoch", y="temperature", figsize=(11.69, 8.27))
-
-# %%
 import matplotlib.pyplot as plt
 
-plt.style.use("ggplot")
-
-# %%
-df.plot(x="epoch", y="temperature", figsize=(11.69, 8.27))
+df.plot(x="epoch", y="temperature") # kind="line"
+plt.show()
 
 # %%
 """
@@ -210,14 +195,18 @@ df.plot(x="epoch", y="temperature", figsize=(11.69, 8.27))
 """
 
 # %%
+# Groups the data per week
 df['per'] = df.set_index("epoch").index.to_period('W')
+df.per
 
-df.boxplot(column="temperature", by="per", figsize=(11.69, 8.27), rot=90)
+
+df.boxplot(column="temperature", by="per", rot=90)
+plt.show()
 
 # %%
 df['per'] = df.set_index("epoch").index.to_period('M')
-
-df.boxplot(column="temperature", by="per", figsize=(11.69, 8.27))
+df.boxplot(column="temperature", by="per")
+plt.show()
 
 # %%
 """
@@ -226,11 +215,13 @@ df.boxplot(column="temperature", by="per", figsize=(11.69, 8.27))
 
 # %%
 """
-It is quite easy to group data per week ...
+It is quite easy to aggregate data per week ...
 """
 
 # %%
-df.set_index("epoch").precipitation.resample("W").sum().plot(kind="bar", figsize=(11.69, 8.27))
+df.set_index("epoch").precipitation.resample("W").sum().plot(kind="bar")
+plt.tight_layout()
+plt.show()
 
 # %%
 """
@@ -239,8 +230,6 @@ df.set_index("epoch").precipitation.resample("W").sum().plot(kind="bar", figsize
 
 # %%
 import seaborn
-
-seaborn.set_palette("colorblind")
 
 # %%
 """
@@ -251,8 +240,8 @@ There, lots of functions expect the data to be in the "long format". The seaborn
 
 # %%
 sdf = pandas.wide_to_long(
-    df=df.drop("cntv3", axis=1),
-    stubnames=["vwc", "temp", "ec", "cntv"],
+    df=df,
+    stubnames=["vwc", "temp", "ec"],
     i="epoch",
     j="sensor"
 )
@@ -261,7 +250,7 @@ sdf
 # %%
 sdf = sdf.reset_index().melt(
     id_vars=["epoch", "sensor"],
-    value_vars=["vwc", "temp", "ec", "cntv"]
+    value_vars=["vwc", "temp", "ec"]
 )
 sdf
 
@@ -273,4 +262,5 @@ g = seaborn.catplot(
     x="per", y="value",
     hue="sensor", col="variable",
     data=sdf, kind="box",
-    height=7, aspect=1, col_wrap=2, sharey=False);
+    height=2, aspect=1.75, col_wrap=2, sharey=False)
+
