@@ -42,7 +42,7 @@ df.epoch = pandas.to_datetime(df.epoch, unit='ms')
 import numpy as np
 
 df.loc[df.temperature < -100, ('temperature')] = np.nan
-for key in ["windspeed", "winddirection", "temperature", "humidity"]:
+for key in ["windspeed", "winddirection", "humidity"]:
     df.loc[df[key] < 0, (key)] = np.nan
 
 # %%
@@ -123,6 +123,14 @@ plt.matshow(dataset_df.corr(), fignum=f.number)
 plt.xticks(range(dataset_df.shape[1]), dataset_df.columns, fontsize=10, rotation=30, horizontalalignment='left')
 plt.yticks(range(dataset_df.shape[1]), dataset_df.columns, fontsize=10)
 cb = plt.colorbar()
+plt.show()
+
+# %%
+temp_diff = dataset_df.temperature - dataset_df.future_temperature
+temp_diff.describe()
+
+# %%
+temp_diff.hist()
 plt.show()
 
 # %%

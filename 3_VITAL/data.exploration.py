@@ -163,7 +163,7 @@ Here, we use the .loc function which provides quick indexing of the data, in ord
 import numpy as np
 
 df.loc[df.temperature < -100, ('temperature')] = np.nan
-for key in ["windspeed", "winddirection", "temperature", "humidity"]:
+for key in ["windspeed", "winddirection", "humidity"]:
   df.loc[df[key] < 0, (key)] = np.nan
 
 # %%
