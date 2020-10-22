@@ -164,7 +164,7 @@ import numpy as np
 
 df.loc[df.temperature < -100, ('temperature')] = np.nan
 for key in ["windspeed", "winddirection", "temperature", "humidity"]:
-  df.loc[df[key] < 0, ('humidity')] = np.nan
+  df.loc[df[key] < 0, (key)] = np.nan
 
 # %%
 """
