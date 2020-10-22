@@ -10,7 +10,7 @@ class GesturesVisualizer():
         self.height = deviceHeight
 
     def plot_gestures(self):
-        fig = plt.figure(figsize=(6, 4 * (self.height / self.width)))
+        fig = plt.figure(figsize=(3.75, 2.5 * (self.height / self.width)))
         ax = fig.add_axes([0.15, 0.05, 0.55, 0.85])
         labels = OrderedDict()
         for i, _ind in enumerate(self.gestures.index):

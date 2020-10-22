@@ -82,7 +82,7 @@ def create_line_charts(users, gestures):
 def create_boxplot(devices):
 
     devices["os"] = devices.set_index("os").index
-    devices.boxplot(column=["width", "height"], by="os", figsize=(11.69, 8.27), rot=45)
+    devices.boxplot(column=["width", "height"], by="os", rot=45)
     plt.show()
 
 def visualize_gestures(users, devices):
