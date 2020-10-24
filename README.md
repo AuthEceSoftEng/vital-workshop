@@ -20,7 +20,8 @@ After repl.it opens up, run the following commands at the console (on the right)
 You 're all set! Open any script to see the code and run it using commands (e.g. `python 1_Cenote/code.py`).  
 You can also write `python` in the console to run the interpreter and execute the commands one-by-one.
 
-## Workshop Recordings
-The recordings of the "Data Analytics for IoT" workshop can be found in the following links:
-- [Part 1](https://www.dropbox.com/s/l8px6ulmxl2faex/part%201.mp4?dl=0)
-- [Part 2](https://www.dropbox.com/s/om4e2absh6d1urb/part%202.mp4?dl=0)
+## Workshop Material
+The presentation of thw workshop can be found at the link:  
+https://www.dropbox.com/s/z31gf1shffxccs9/Data_Analytics_for_IoT.pdf  
+and the recording can be found at the link:  
+https://www.dropbox.com/s/nuy3p394g0z85xc/Data_Analytics_for_IoT.mp4
