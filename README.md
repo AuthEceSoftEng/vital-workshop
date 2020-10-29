@@ -21,7 +21,7 @@ You 're all set! Open any script to see the code and run it using commands (e.g.
 You can also write `python` in the console to run the interpreter and execute the commands one-by-one.
 
 ## Workshop Material
-The presentation of thw workshop can be found at the link:  
+The presentation of the workshop can be found at the link:  
 https://www.dropbox.com/s/z31gf1shffxccs9/Data_Analytics_for_IoT.pdf  
 and the recording can be found at the link:  
-https://www.dropbox.com/s/nuy3p394g0z85xc/Data_Analytics_for_IoT.mp4
+https://www.dropbox.com/s/wx58qd4p9jgdpyt/Data_Analytics_for_IoT.mp4
